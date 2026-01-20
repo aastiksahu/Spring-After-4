@@ -14,7 +14,7 @@ import com.rays.dto.UserDTO;
 public class UserServiceImpl implements UserServiceInt {
 
 	@Autowired
-	private UserDAOInt dao;
+	private UserDAOInt dao = null;
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public long add(UserDTO dto) {
@@ -28,32 +28,21 @@ public class UserServiceImpl implements UserServiceInt {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void delete(int id) {
-		dao.delete(id);
+	public void delete(long pk) {
+		dao.delete(pk);
 	}
 
-	@Override
-	public UserDTO authenticate(String login, String password) {
-		return dao.authenticate(login, password);
+	@Transactional(readOnly = true)
+	public UserDTO findByPk(long pk) {
+		return dao.findByPk(pk);
 	}
 
-	@Override
+	@Transactional(readOnly = true)
 	public UserDTO findByLogin(String login) {
-		UserDTO dto = dao.findByLogin(login);
-		return dto;
+		return dao.findByLogin(login);
 	}
 
-	@Override
-	public UserDTO findByPk(int id) {
-		return dao.findByPk(id);
-	}
-
-	@Override
-	public List<UserDTO> search() {
-		return dao.search();
-	}
-
-	@Override
+	@Transactional(readOnly = true)
 	public List<UserDTO> search(UserDTO dto, int pageNo, int pageSize) {
 		return dao.search(dto, pageNo, pageSize);
 	}
