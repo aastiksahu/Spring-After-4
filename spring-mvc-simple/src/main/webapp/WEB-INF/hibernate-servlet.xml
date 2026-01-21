@@ -14,7 +14,7 @@
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/spring_mvc" />
+			value="jdbc:mysql://localhost:3306/spring_mv" />
 		<property name="user" value="root" />
 		<property name="password" value="root" />
 		<property name="acquireIncrement" value="10" />
@@ -42,7 +42,7 @@
 		</property>
 	</bean>
 
-	<bean id="hibernateTrasnsactionManager"
+	<bean id="hibernateTransactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>

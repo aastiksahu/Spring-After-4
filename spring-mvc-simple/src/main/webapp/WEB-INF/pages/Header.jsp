@@ -11,14 +11,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div align="center">
-		<h1>${message}</h1>
-	</div>
+
 </body>
 </html>
