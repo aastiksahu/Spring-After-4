@@ -18,7 +18,13 @@ public class UserServiceImpl implements UserServiceInt {
 	public UserDAOInt dao = null;
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public long add(UserDTO dto) {
+	public long add(UserDTO dto) throws Exception {
+		
+		UserDTO existDTO = findByLogin(dto.getLogin());
+		
+		if (existDTO != null) {
+			throw new Exception("Email Allready Exists..");
+		}
 		long i = dao.add(dto);
 		return i;
 	}
@@ -29,7 +35,7 @@ public class UserServiceImpl implements UserServiceInt {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public long save(UserDTO dto) {
+	public long save(UserDTO dto) throws Exception {
 		long id = dto.getId();
 		if (dto.getId() != null && dto.getId() > 0) {
 			update(dto);

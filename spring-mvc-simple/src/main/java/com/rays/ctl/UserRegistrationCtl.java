@@ -16,18 +16,18 @@ import com.rays.util.DataUtility;
 @Controller
 @RequestMapping(value = "Register")
 public class UserRegistrationCtl {
-	
+
 	@Autowired
 	public UserServiceInt service;
-	
+
 	@GetMapping
 	public String display(@ModelAttribute("form") UserRegistrationForm from) {
 		return "UserRegistration";
 	}
-	
+
 	@PostMapping
 	public String submit(@ModelAttribute("form") UserRegistrationForm form, Model model) {
-		
+
 		UserDTO dto = new UserDTO();
 		dto.setFirstName(form.getFirstName());
 		dto.setLastName(form.getLastName());
@@ -35,9 +35,14 @@ public class UserRegistrationCtl {
 		dto.setPassword(form.getPassword());
 		dto.setDob(DataUtility.stringToDate(form.getDob()));
 		dto.setAddress(form.getAddress());
-		
-		service.add(dto);
-		model.addAttribute("msg", "User Register Successfully..");
+
+		try {
+			service.add(dto);
+			model.addAttribute("msg", "User Register Successfully..");
+		} catch (Exception e) {
+			model.addAttribute("emsg", e.getMessage());
+		}
+
 		return "UserRegistration";
 	}
 
