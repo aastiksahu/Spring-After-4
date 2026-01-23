@@ -40,12 +40,12 @@ public class LoginCtl {
 		dto.setLogin(form.getLogin());
 		dto.setPassword(form.getPassword());
 
-		service.authenticate(dto.getLogin(), dto.getPassword());
+		dto = service.authenticate(dto.getLogin(), dto.getPassword());
 
 		if (dto != null) {
+			System.out.println(dto.getFirstName());
 			session.setAttribute("user", dto);
 			return "redirect:Welcome";
-			
 		} else {
 			model.addAttribute("emsg", "Invalid Login or Password..");
 			return "Login";
