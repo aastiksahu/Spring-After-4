@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
@@ -12,15 +15,14 @@
 			<span style="color: green">${msg}</span> <span style="color: red">${emsg}</span>
 			<table>
 				<tr>
-					<th align="left">Login Id :</th>
-					<td><sf:input path="login" placeholder="Enter Your Login Id" /></td>
+					<th align="left">Login ID :</th>
+					<td><sf:input path="login" placeholder="enter your login" /></td>
 				</tr>
-
 				<tr>
 					<th align="left">Password :</th>
-					<td><sf:input path="password" placeholder="Enter Your Password"  /></td>
+					<td><sf:input path="password"
+							placeholder="enter your password" /></td>
 				</tr>
-
 				<tr>
 					<th></th>
 					<td><input type="submit" name="operation" value="signIn"></td>
